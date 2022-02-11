@@ -1,0 +1,13 @@
+[Unit]
+Description = uWSGI instance to serve postvitam
+After = network.target
+
+[Service]
+User = root
+Group = www-data
+WorkingDirectory = /home/postvitam
+Environment = "PATH=/home/postvitam/env/bin"
+ExecStart = /home/postvitam/env/bin/uwsgi --ini /home/postvitam/postvitam.ini
+
+[Install]
+WantedBy = multi-user.target

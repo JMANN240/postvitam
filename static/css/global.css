@@ -12,6 +12,20 @@ body {
     background-color: var(--prim);
 }
 
+button {
+    margin: 0.25em;
+    padding: 0.25em;
+    background-color: var(--prim);
+}
+
+video {
+    width: 100vw;
+    height: 100vh;
+    animation-duration: 8s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+}
+
 :root {
     --prim: #000000;
     --prim-shadow: #101010;
@@ -56,7 +70,7 @@ body {
 }
 
 @keyframes fade_up {
-    from {
+    0% {
         transform: translateY(2vh);
         opacity: 0;
     }
@@ -71,14 +85,14 @@ body {
         opacity: 1;
     }
 
-    to {
+    100% {
         transform: translateY(2vh);
         opacity: 0;
     }
 }
 
 @keyframes fade_down {
-    from {
+    0% {
         transform: translateY(-2vh);
         opacity: 0;
     }
@@ -93,9 +107,63 @@ body {
         opacity: 1;
     }
 
-    to {
+    100% {
         transform: translateY(-2vh);
         opacity: 0;
+    }
+}
+
+@keyframes button_up {
+    0% {
+        border: 1px solid var(--prim);
+        transform: translateY(0.125em);
+        opacity: 0;
+        text-shadow: 0 0 10px var(--prim);
+        box-shadow: 0 0 0 0 var(--prim);
+    }
+
+    50% {
+        border: 1px solid var(--sec);
+        transform: translateY(0.125em);
+        opacity: 1;
+        text-shadow: 0 0 10px var(--sec);
+        box-shadow: 0 0 0 0 var(--sec);
+    }
+
+    100% {
+
+    }
+}
+
+@keyframes button_down {
+    0% {
+
+    }
+
+    50% {
+        border: 1px solid var(--sec);
+        transform: translateY(0.125em);
+        opacity: 1;
+        text-shadow: 0 0 10px var(--sec);
+        box-shadow: 0 0 0 0 var(--sec);
+    }
+
+    100% {
+        border: 1px solid var(--prim);
+        transform: translateY(0.125em);
+        opacity: 0;
+        text-shadow: 0 0 10px var(--prim);
+        box-shadow: 0 0 0 0 var(--prim);
+    }
+}
+
+@keyframes video_in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
     }
 }
 
@@ -115,9 +183,43 @@ body {
     animation-duration: 5s;
 }
 
+.button.up {
+    animation-name: button_up;
+    animation-duration: 4s;
+}
+
+.button.down {
+    animation-name: button_down;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+}
+
 .fancy {
     font-family: 'Cinzel', serif;
     font-weight: 400;
+    text-shadow: 0 0 10px var(--sec);
+}
+
+button.fancy {
+    will-change: text-shadow, box-shadow, transform, border, opacity;
+    border-radius: 0.5em;
+    border: 1px solid var(--sec);
+    box-shadow: 0 0.125em 0 0 var(--sec), 0 0.125em 0.25em 0 var(--sec);
+    transition-duration: 0.2s;
+}
+
+button.fancy:hover {
+    border-radius: 0.5em;
+    border: 1px solid var(--sec);
+    transform: translateY(0.025em);
+    box-shadow: 0 0.1em 0 0 var(--sec), 0 0.1em 0.2em 0 var(--sec);
+}
+
+button.fancy:active {
+    border-radius: 0.5em;
+    border: 1px solid var(--sec);
+    transform: translateY(0.125em);
+    box-shadow: 0 0 0 0 var(--sec), 0 0 0 0 var(--sec);
 }
 
 .large {
